@@ -1,5 +1,14 @@
 @extends('layouts.main')
 
+@section('hero')
+<h1>Contact Us</h1>
+  <h4>Home - Contact Us</h4> 
+@endsection
+
+@section('active-class-contact')
+active
+@endsection
+
 @section('content')
   <section class="section-margin--small section-margin">
     <div class="container">

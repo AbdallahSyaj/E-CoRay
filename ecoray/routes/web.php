@@ -3,15 +3,21 @@
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 
+Route::get('/lara', function () {
+    return view('welcome');
+})->name('lara');
+
 Route::get('/', function () {
     return view('index');
-});
+})->name('home');
 
 Route::get('/contact', function () {
     return view('pages.contact');
 })->name('contact');
 
-
+Route::get('/categories', function () {
+    return view('pages.categories');
+})->name('categories');
 
 
 

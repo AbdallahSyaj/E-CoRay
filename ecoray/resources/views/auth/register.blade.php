@@ -1,4 +1,68 @@
-<x-guest-layout>
+@extends('layouts.main')
+
+
+
+@section('hero')
+<h1>Register</h1>
+<h4>Welcome To RayBlog</h4>
+@endsection
+
+@section('content')
+
+  <!-- ================ contact section start ================= -->
+  <section class="section-margin--small section-margin">
+    <div class="container">
+      <div class="row">
+        <div class="col-12">
+          <form action="{{ route('register') }}" class="form-contact contact_form" action="contact_process.php" method="POST" id="contactForm" novalidate="novalidate">
+            @csrf
+            <div class="row">
+              <div class="col-6">
+                <div class="form-group">
+                  <input class="form-control border" name="name" id="name" type="text" placeholder="Enter your name">
+                </div>
+                <div class="form-group">
+                  <input class="form-control border" name="email" id="email" type="email" placeholder="Enter email address">
+                </div>
+              </div>
+              <div class="col-6">
+                <div class="form-group">
+                  <input class="form-control border" name="password" id="name" type="password" placeholder="Enter your password">
+                </div>
+                <div class="form-group">
+                  <input class="form-control border" name="password_confirmation" type="password" placeholder="Enter your password confirmation">
+                </div>
+              </div>
+            </div>
+            <div class="form-group text-center text-md-right mt-3">
+             <button type="button" class="button button--active button-contactForm">
+                <a href="{{ route('login') }}" style="text-decoration: none; color:orange">Already have acount</a>
+            </button>
+             <button type="submit" class="button button--active button-contactForm">Register</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+	<!-- ================ contact section end ================= -->
+
+@endsection
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+{{-- <x-guest-layout>
     <form method="POST" action="{{ route('register') }}">
         @csrf
 
@@ -49,4 +113,4 @@
             </x-primary-button>
         </div>
     </form>
-</x-guest-layout>
+</x-guest-layout> --}}

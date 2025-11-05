@@ -1,29 +1,42 @@
-<x-app-layout>
-    <x-slot name="header">
-        <h2 class="font-semibold text-xl text-gray-800 dark:text-gray-200 leading-tight">
-            {{ __('Profile') }}
-        </h2>
-    </x-slot>
+@extends('layouts.main')
 
-    <div class="py-12">
-        <div class="max-w-7xl mx-auto sm:px-6 lg:px-8 space-y-6">
-            <div class="p-4 sm:p-8 bg-white dark:bg-gray-800 shadow sm:rounded-lg">
-                <div class="max-w-xl">
-                    @include('profile.partials.update-profile-information-form')
-                </div>
-            </div>
+@section('head')
+<link rel="stylesheet" href="css/profile.css">
+@endsection
 
-            <div class="p-4 sm:p-8 bg-white dark:bg-gray-800 shadow sm:rounded-lg">
-                <div class="max-w-xl">
-                    @include('profile.partials.update-password-form')
-                </div>
-            </div>
+@section('hero')
+<h1>Profile</h1>
+<h3>Welcome, {{ Auth::user()->name }} to your profile</h3>
+@endsection
 
-            <div class="p-4 sm:p-8 bg-white dark:bg-gray-800 shadow sm:rounded-lg">
-                <div class="max-w-xl">
-                    @include('profile.partials.delete-user-form')
-                </div>
-            </div>
-        </div>
+@section('content')
+<div class="profile-container">
+
+    <!-- Update Profile -->
+    <div class="profile-card">
+        @include('profile.partials.update-profile-information-form')
     </div>
-</x-app-layout>
+
+    <!-- Update Password -->
+    <div class="profile-card">
+        @include('profile.partials.update-password-form')
+    </div>
+
+    <!-- Delete User -->
+    <div class="profile-card delete-box">
+        @include('profile.partials.delete-user-form')
+    </div>
+
+    <form action="{{ route('logout') }}" method="Post">
+        @csrf
+        <button type="submit" class="btn btn-danger">Logout</button>
+    </form>
+
+</div>
+
+@endsection
+
+
+
+
+

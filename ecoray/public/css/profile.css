@@ -1,0 +1,105 @@
+/* -------------------------------------
+   Page Container
+-------------------------------------- */
+.profile-container {
+    max-width: 900px;
+    margin: 40px auto;
+    padding: 0 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+    font-family: 'Inter', sans-serif;
+}
+
+/* -------------------------------------
+   Card Style
+-------------------------------------- */
+.profile-card {
+    background: #ffffff;
+    padding: 30px;
+    border-radius: 14px;
+    border-left: 4px solid #ff7a00;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.06);
+    transition: 0.2s;
+}
+
+.profile-card:hover {
+    transform: translateY(-3px);
+}
+
+/* Titles */
+.profile-card h2 {
+    margin-bottom: 20px;
+    color: #333;
+    font-size: 22px;
+    font-weight: 700;
+}
+
+/* -------------------------------------
+   Inputs Styling
+-------------------------------------- */
+.profile-card input,
+.profile-card select,
+.profile-card textarea {
+    width: 100%;
+    padding: 11px 14px;
+    border: 1.6px solid #ddd;
+    border-radius: 8px;
+    font-size: 15px;
+    margin-top: 6px;
+    margin-bottom: 14px;
+    transition: 0.25s;
+}
+
+.profile-card input:focus {
+    border-color: #ff7a00;
+    box-shadow: 0 0 5px rgba(255,123,0,0.45);
+}
+
+/* -------------------------------------
+   Buttons
+-------------------------------------- */
+button,
+.btn-orange {
+    background: #ff7a00;
+    color: white;
+    border: none;
+    padding: 12px 18px;
+    border-radius: 8px;
+    font-size: 15px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: 0.2s;
+}
+
+button:hover,
+.btn-orange:hover {
+    background: #e96e00;
+}
+
+/* Delete Button */
+.btn-danger-custom,
+button.danger {
+    background: #ff3b30;
+}
+
+.btn-danger-custom:hover,
+button.danger:hover {
+    background: #d8342b;
+}
+
+/* -------------------------------------
+   Delete Box (Red border style)
+-------------------------------------- */
+.delete-box {
+    border: 2px dashed #ff3b30;
+}
+
+/* Success Message */
+.alert-success {
+    background: #ff7a00;
+    color: white;
+    padding: 10px 16px;
+    border-radius: 6px;
+    margin-top: 10px;
+}

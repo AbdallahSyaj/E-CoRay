@@ -1,5 +1,16 @@
 @extends('layouts.main')
 
+@section('hero')
+  <h3>Tour & Travels</h3>
+  <h1>Amazing Places on earth</h1>
+  <h4>December 12, 2018</h4> 
+@endsection
+
+@section('active-class-index')
+active
+@endsection
+
+
 @section('content')
     <!--================ Blog slider start =================-->  
     <section>
