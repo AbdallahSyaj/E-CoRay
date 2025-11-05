@@ -10,9 +10,13 @@ class Comment extends Model
     /** @use HasFactory<\Database\Factories\CommentFactory> */
     use HasFactory;
 
-
-
-
+    protected $fillable = [
+        'name',
+        'email',
+        'subject',
+        'message',
+        'blog_id',
+    ];
 
 
 

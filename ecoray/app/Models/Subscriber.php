@@ -9,4 +9,8 @@ class Subscriber extends Model
 {
     /** @use HasFactory<\Database\Factories\SubscriberFactory> */
     use HasFactory;
+
+    protected $fillable = [
+        'email',
+    ];
 }

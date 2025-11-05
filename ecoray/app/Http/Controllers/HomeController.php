@@ -2,18 +2,24 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Contact;
-use App\Http\Requests\StoreContactRequest;
-use App\Http\Requests\UpdateContactRequest;
+use App\Models\Blog;
+use Illuminate\Http\Request;
 
-class ContactController extends Controller
+class HomeController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
-        return view('pages.contact');
+  
+    $latestBlogs = Blog::orderBy('id', 'desc')->take(2)->get();;
+
+    $pageBlogs = Blog::with('user', 'category')->latest()->paginate(4);
+
+    $sliderBlogs = Blog::with('user', 'category')->latest()->take(4)->get();
+
+    return view('index', compact('latestBlogs', 'pageBlogs', 'sliderBlogs'));
     }
 
     /**
@@ -27,17 +33,15 @@ class ContactController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(StoreContactRequest $request)
+    public function store(Request $request)
     {
-        Contact::create($request->validated());
-
-        return redirect()->route('home');
+        //
     }
 
     /**
      * Display the specified resource.
      */
-    public function show(Contact $contact)
+    public function show(string $id)
     {
         //
     }
@@ -45,7 +49,7 @@ class ContactController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Contact $contact)
+    public function edit(string $id)
     {
         //
     }
@@ -53,7 +57,7 @@ class ContactController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(UpdateContactRequest $request, Contact $contact)
+    public function update(Request $request, string $id)
     {
         //
     }
@@ -61,7 +65,7 @@ class ContactController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Contact $contact)
+    public function destroy(string $id)
     {
         //
     }
