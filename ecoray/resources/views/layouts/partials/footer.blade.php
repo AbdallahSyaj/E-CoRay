@@ -43,14 +43,14 @@
           <div class="single-footer-widget mail-chimp">
             <h6 class="mb-20">Instragram Feed</h6>
             <ul class="instafeed d-flex flex-wrap">
-              <li><img src="img/instagram/i1.jpg" alt=""></li>
-              <li><img src="img/instagram/i2.jpg" alt=""></li>
-              <li><img src="img/instagram/i3.jpg" alt=""></li>
-              <li><img src="img/instagram/i4.jpg" alt=""></li>
-              <li><img src="img/instagram/i5.jpg" alt=""></li>
-              <li><img src="img/instagram/i6.jpg" alt=""></li>
-              <li><img src="img/instagram/i7.jpg" alt=""></li>
-              <li><img src="img/instagram/i8.jpg" alt=""></li>
+              <li><img src="{{asset('img/instagram/i1.jpg')  }}" alt=""></li>
+              <li><img src="{{asset('img/instagram/i2.jpg')  }}" alt=""></li>
+              <li><img src="{{asset('img/instagram/i3.jpg')  }}" alt=""></li>
+              <li><img src="{{asset('img/instagram/i4.jpg')  }}" alt=""></li>
+              <li><img src="{{asset('img/instagram/i5.jpg')  }}" alt=""></li>
+              <li><img src="{{asset('img/instagram/i6.jpg')  }}" alt=""></li>
+              <li><img src="{{asset('img/instagram/i7.jpg')  }}" alt=""></li>
+              <li><img src="{{asset('img/instagram/i8.jpg')  }}" alt=""></li>
             </ul>
           </div>
         </div>

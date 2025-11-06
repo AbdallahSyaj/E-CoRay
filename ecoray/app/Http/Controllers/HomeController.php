@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Blog;
+use App\Models\Categorie;
 use Illuminate\Http\Request;
 
 class HomeController extends Controller
@@ -12,6 +13,8 @@ class HomeController extends Controller
      */
     public function index()
     {
+
+    $categories = Categorie::withCount('blogs')->get();
   
     $latestBlogs = Blog::orderBy('id', 'desc')->take(2)->get();;
 
@@ -19,7 +22,7 @@ class HomeController extends Controller
 
     $sliderBlogs = Blog::with('user', 'category')->latest()->take(4)->get();
 
-    return view('index', compact('latestBlogs', 'pageBlogs', 'sliderBlogs'));
+    return view('index', compact('latestBlogs', 'pageBlogs', 'sliderBlogs','categories'));
     }
 
     /**
@@ -27,7 +30,7 @@ class HomeController extends Controller
      */
     public function create()
     {
-        //
+        return view('pages.addblog');
     }
 
     /**

@@ -2,65 +2,34 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Blog;
 use App\Models\Categorie;
-use App\Http\Requests\StoreCategorieRequest;
-use App\Http\Requests\UpdateCategorieRequest;
+use Illuminate\Http\Request;
 
 class CategorieController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     */
+   
     public function index()
     {
-        return view('pages.categories');
+        $categories = Categorie::withCount('blogs')->get();
+
+        $pageBlogs = Blog::with('user', 'category')->latest()->paginate(6);
+
+        $latestBlogs = Blog::orderBy('id', 'desc')->take(2)->get();
+
+        return view('pages.categories', compact('categories', 'pageBlogs', 'latestBlogs'));
     }
 
-    /**
-     * Show the form for creating a new resource.
-     */
-    public function create()
+    
+    public function show($id ,Request $request)
     {
-        //
-    }
+        $category = Categorie::findOrFail($id);
 
-    /**
-     * Store a newly created resource in storage.
-     */
-    public function store(StoreCategorieRequest $request)
-    {
-        //
-    }
+        $blogs = Blog::with('user')->where('category_id', $id)->latest()->paginate(6);
 
-    /**
-     * Display the specified resource.
-     */
-    public function show(Categorie $categorie)
-    {
-        //
-    }
+        $categories = Categorie::withCount('blogs')->get();
+        $latestBlogs = Blog::orderBy('id', 'desc')->take(2)->get();
 
-    /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit(Categorie $categorie)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     */
-    public function update(UpdateCategorieRequest $request, Categorie $categorie)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     */
-    public function destroy(Categorie $categorie)
-    {
-        //
+        return view('pages.categories', compact('category', 'blogs', 'categories', 'latestBlogs'));
     }
 }
