@@ -10,7 +10,16 @@
     <div class="container">
       <div class="row">
         <div class="col-6 mx-auto">
-          <form action="{{route('login')}}" class="form-contact contact_form" action="contact_process.php" method="POST" id="contactForm" novalidate="novalidate">
+
+          @if ($errors->any())
+                    <ul>
+                        @foreach ($errors->all() as $error)
+                            <li class="text-danger">{{ $error }}</li>
+                        @endforeach
+                    </ul>
+                @endif
+                
+          <form action="{{route('login')}}" class="form-contact contact_form" method="POST" id="contactForm" novalidate="novalidate">
             @csrf
             <div class="form-group">
               <input class="form-control border" name="email" id="email" type="email" placeholder="Enter email address">

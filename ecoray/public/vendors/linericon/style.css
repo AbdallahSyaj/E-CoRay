@@ -534,3 +534,12 @@
 .lnr-pointer-left:before {
 	content: "\e8a9";
 }
+
+ .is-invalid {
+        border-color: #dc3545 !important;
+        background-color: #ffe6e6;
+    }
+    .is-valid {
+        border-color: #28a745 !important;
+        background-color: #e6ffe6;
+    }
