@@ -27,6 +27,10 @@
         @include('profile.partials.delete-user-form')
     </div>
 
+    <!-- User's Blogs -->
+    @include('profile.partials.user-blogs')
+
+    
     <form action="{{ route('logout') }}" method="Post">
         @csrf
         <button type="submit" class="btn btn-danger">Logout</button>

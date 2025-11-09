@@ -16,9 +16,12 @@ class ProfileController extends Controller
      */
     public function edit(Request $request): View
     {
-        return view('profile.edit', [
-            'user' => $request->user(),
-        ]);
+
+
+        $user = $request->user();
+        $userBlogs = $request->user()->blog()->latest()->get();
+
+        return view('profile.edit',compact('user','userBlogs'));
     }
 
     /**
@@ -57,4 +60,6 @@ class ProfileController extends Controller
 
         return Redirect::to('/');
     }
+
+
 }

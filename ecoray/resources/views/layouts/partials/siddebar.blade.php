@@ -36,7 +36,7 @@
                             @foreach ($latestBlogs as $blog)
                             <div class="single-post-list">
                                 <div class="thumb">
-                                    <img class="card-img rounded-0" src="{{asset($blog->image)}}" alt="">
+                                    <img class="card-img rounded-0" src="{{asset('storage/' . $blog->image)}}" alt="">
                                     <ul class="thumb-info">
                                         <li><a href="#">{{ $blog->user->name }}</a></li>
                                         <li><a href="#">{{ $blog->comments->count() }} Comments</a></li>

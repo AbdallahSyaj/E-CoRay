@@ -14,6 +14,12 @@ Route::get('/lara', function () {
 Route::get('/', [HomeController::class,'index'])->name('home');
 
 Route::get('/search', [BlogController::class, 'search'])->name('blogs.search');
+Route::get('/addBlogPage',[BlogController::class,'create'])->name('blogs.create');
+Route::post('/addBlog',[BlogController::class,'store'])->name('blogs.store');
+Route::get('/blogs/{blog}/edit', [BlogController::class, 'edit'])->name('blogs.edit');
+Route::put('/blogsUpdate/{blog}', [BlogController::class, 'update'])->name('blogs.update');
+Route::delete('/blogs/{blog}', [BlogController::class, 'destroy'])->name('blogs.destroy');
+
 
 
 Route::get('/contact',[ContactController::class, 'index'] )->name('contact');

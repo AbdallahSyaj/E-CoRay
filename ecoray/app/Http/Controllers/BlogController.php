@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Blog;
 use App\Models\Categorie;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use App\Http\Requests\StoreBlogRequest;
 use App\Http\Requests\UpdateBlogRequest;
 
@@ -38,6 +39,8 @@ class BlogController extends Controller
     public function create()
     {
         //
+         $categories = Categorie::all();
+    return view('pages.blogs.addblog', compact('categories'));
     }
 
     /**
@@ -46,6 +49,18 @@ class BlogController extends Controller
     public function store(StoreBlogRequest $request)
     {
         //
+        $path = $request->file('image')->store('blogs', 'public');
+
+        Blog::create([
+        'name' => $request->name,
+        'description' => $request->description,
+        'image' => $path,
+        'category_id' => $request->category_id,
+        'user_id' => Auth::id(),
+
+    ]);
+
+    return redirect()->route('blogs.create')->with('success', 'Blog added successfully!');
     }
 
     /**
@@ -62,6 +77,8 @@ class BlogController extends Controller
     public function edit(Blog $blog)
     {
         //
+        $categories = Categorie::all();
+    return view('pages.blogs.editblog', compact('blog', 'categories'));
     }
 
     /**
@@ -70,13 +87,30 @@ class BlogController extends Controller
     public function update(UpdateBlogRequest $request, Blog $blog)
     {
         //
+            if ($blog->user_id !== Auth::id()) {
+            abort(403);
+            }
+        $data = $request->only(['name', 'description']);
+
+        if ($request->hasFile('image')) {
+            $path = $request->file('image')->store('blogs', 'public');
+            $data['image'] = $path;
+        }
+
+        
+        $blog->update($data);
+
+        return redirect()->route('profile.edit')->with('success', 'Blog updated successfully!');
     }
+    
 
     /**
      * Remove the specified resource from storage.
      */
     public function destroy(Blog $blog)
-    {
-        //
-    }
+{
+    $blog->delete();
+    return redirect()->route('profile.edit')->with('success', 'Blog deleted successfully!');
+}
+
 }

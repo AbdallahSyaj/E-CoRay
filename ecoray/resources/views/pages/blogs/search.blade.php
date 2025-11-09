@@ -17,7 +17,7 @@
                         <div class="col-md-6">
                             <div class="single-recent-blog-post card-view">
                                 <div class="thumb">
-                                    <img class="card-img rounded-0" src="{{ $blog->image }}" alt="">
+                                    <img class="card-img rounded-0" src="{{ asset('storage/' . $blog->image) }}" alt="">
                                     <ul class="thumb-info">
                                         <li><a href="#"><i class="ti-user"></i> {{ $blog->user->name }}</a></li>
                                         <li><a href="#"><i class="ti-themify-favicon"></i> {{ $blog->comments->count() }} Comments</a></li>

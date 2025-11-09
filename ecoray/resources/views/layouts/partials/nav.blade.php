@@ -19,7 +19,7 @@
             
             <!-- Add new blog -->
             @auth
-            <a href="#" class="btn btn-sm btn-primary mr-2">Add New Post</a>
+            <a href="{{route ('blogs.create')}}" class="btn btn-sm btn-primary mr-2">Add New Post</a>
             @endauth
             <!-- End - Add new blog -->
 

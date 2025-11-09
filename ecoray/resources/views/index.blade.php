@@ -21,7 +21,7 @@ active
 
           <div class="card blog__slide text-center">
             <div class="blog__slide__img">
-              <img class="card-img rounded-0" src="{{$blog->image}}" alt="">
+              <img class="card-img rounded-0" src="{{asset('storage/' . $blog->image)}}" alt="">
             </div>
             <div class="blog__slide__content">
               <a class="blog__slide__label" href="#">{{ $blog->category->name}}</a>
@@ -47,7 +47,7 @@ active
             
             <div class="single-recent-blog-post">
               <div class="thumb">
-                <img class="img-fluid" src="{{$blog->image}}" alt="">
+                <img class="img-fluid" src="{{asset('storage/' . $blog->image)}}" alt="">
                 <ul class="thumb-info">
                   <li><a href="#"><i class="ti-user"></i>{{$blog->user->name}}</a></li>
                   <li><a href="#"><i class="ti-notepad"></i>January 12,2019</a></li>
