@@ -19,6 +19,9 @@ return new class extends Migration
             $table->foreignId('category_id')->constrained()->onDelete('cascade');
             $table->foreignId('user_id')->constrained()->onDelete('cascade');
             $table->timestamps();
+
+            // Full text index for name and description
+            $table->fullText(['name', 'description']);
         });
     }
 

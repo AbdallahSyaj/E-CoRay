@@ -2,13 +2,17 @@
                 <div class="widget-wrap">
 
                     <!-- Search -->
-                    <div class="single-sidebar-widget newsletter-widget">
-                        <h4 class="single-sidebar-widget__title">Search Box</h4>
-                        <div class="form-group mt-30">
-                            <input type="text" class="form-control" placeholder="Search Here">
-                        </div>
-                        <button class="bbtns d-block mt-20 w-100">Search Now</button>
-                    </div>
+<div class="single-sidebar-widget newsletter-widget">
+    <h4 class="single-sidebar-widget__title">Search Box</h4>
+    <form action="{{ route('blogs.search') }}" method="GET">
+        <div class="form-group mt-30">
+            <input type="text" class="form-control" placeholder="Search Here" name="search">
+        </div>
+        <button type="submit" class="bbtns d-block mt-20 w-100">Search Now</button>
+    </form>
+</div>
+
+                    
 
                     <!-- Categories -->
                     <div class="single-sidebar-widget post-category-widget">
@@ -32,7 +36,7 @@
                             @foreach ($latestBlogs as $blog)
                             <div class="single-post-list">
                                 <div class="thumb">
-                                    <img class="card-img rounded-0" src="{{ $blog->image }}" alt="">
+                                    <img class="card-img rounded-0" src="{{asset($blog->image)}}" alt="">
                                     <ul class="thumb-info">
                                         <li><a href="#">{{ $blog->user->name }}</a></li>
                                         <li><a href="#">{{ $blog->comments->count() }} Comments</a></li>

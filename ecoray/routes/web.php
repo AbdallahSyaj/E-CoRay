@@ -1,18 +1,19 @@
 <?php
 
-use App\Http\Controllers\CategorieController;
-use App\Http\Controllers\ContactController;
-use App\Http\Controllers\HomeController;
-use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\BlogController;
+use App\Http\Controllers\HomeController;
+use App\Http\Controllers\ContactController;
+use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\CategorieController;
 
 Route::get('/lara', function () {
     return view('welcome');
 })->name('lara');
 
 Route::get('/', [HomeController::class,'index'])->name('home');
-Route::get('/addblog', [HomeController::class,'create'])->name('create.blog');
-Route::post('/addblog', [HomeController::class,'add'])->name('add.blog');
+
+Route::get('/search', [BlogController::class, 'search'])->name('blogs.search');
 
 
 Route::get('/contact',[ContactController::class, 'index'] )->name('contact');
